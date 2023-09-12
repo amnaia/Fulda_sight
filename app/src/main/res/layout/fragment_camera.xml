@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
     ~ Copyright 2022 The TensorFlow Authors. All Rights Reserved.
     ~
     ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +45,7 @@
 
     <View
         android:layout_width="wrap_content"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/bottom_sheet_seperate_results_line"
         android:background="@color/bounding_box_color"
         app:layout_anchor="@id/recyclerview_results"
         app:layout_anchorGravity="bottom" />
