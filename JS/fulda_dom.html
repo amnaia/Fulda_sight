@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Was sehe ich Fulda? - Fuldaer Dom</title>
+  <link href="./CSS/nonbionic-theme.css" rel="stylesheet">
+</head>
+<header class="mb-auto">
+  <div>
+    <h1 class="float-md-start mb-0">Was sehe ich Fulda?</h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+      <a class="nav-link fw-bold py-1 px-0" href="#">About</a>
+    </nav>
+  </div>
+</header>
+<body>
+  <!-- Toggle für Bionic Reading fehlt (evtl. machbar über CSS?)
+      Dann kopieren für weitere Sehenswürdigkeiten-->
+  <div>
+    <h2>Fuldaer Dom</h1>
+    <div id="toggle"><button id="theme-toggle">Bionic Reading</button></div>
+    <p id="text"> Dom St. Salvator zu Fulda (Hoher Dom zu Fulda) ist die Kathedralkirche des Bistums Fulda und als Grabeskirche 
+    des heiligen Bonifatius Ziel der Bonifatiuswallfahrt. Er stellt den Mittelpunkt des Fuldaer Barockviertels dar und ist 
+    zugleich das Wahrzeichen der Stadt Fulda. Unter Fürstabt Adalbert von Schleifras wurde er 1704–1712 von Johann Dientzenhofer
+     als dreischiffige Basilika errichtet und am 15. August 1712 auf das Patrozinium Christus Salvator geweiht. Der Dom diente 
+     zunächst als Abteikirche des Klosters Fulda und wurde 1752 Kathedrale des Bistums.</p>
+     <div id="link"><a href="https://de.wikipedia.org/wiki/Fuldaer_Dom">Mehr</a></div></div>
+     <div id="link"><a href="./fulda_sightseeing.html">Zurück</a></div></div>
+</body>
+<script>
+  // Get references to the theme toggle button and the theme stylesheet
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeStylesheet = document.getElementById("theme-stylesheet");
+
+  // Define variables to track the current theme state
+  let isBionicTheme = false;
+
+  // Function to toggle between light and dark themes
+  function toggleTheme() {
+    if (isBionicTheme) {
+      themeStylesheet.href = "./CSS/bionic-theme.css"; // Switch to the light theme
+    } else {
+      themeStylesheet.href = "./CSS/nonbionic-theme.css"; // Switch to the dark theme
+    }
+    // Update the theme state
+    isBionicTheme = !isBionicTheme;
+  }
+
+  // Attach a click event listener to the theme toggle button
+  themeToggle.addEventListener("click", toggleTheme);
+</script>
+</html>

@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <title>Was sehe ich in Fulda?</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9">
+    
+    <!-- Custom styles for this template -->
+    <link href="./CSS/bionic-theme.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h1 class="float-md-start mb-0"><img src="./Pics/fulda.svg"> Was sehe ich in Fulda?</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+        <a class="nav-link fw-bold py-1 px-0" href="#">About</a>
+      </nav>
+    </div>
+  </header>
+  <div id="einleitung"><span id="fulda_big">Herzlich Willkommen!</span></br>
+  Sie stehen vor einer Sehenswürdigkeit in <span id="fulda">Fulda</span> und wissen nicht genau, vor welcher? </br>
+Machen Sie ein Foto! </br>
+<span id="fulda">1.</span> Klicken Sie auf "Foto aufnehmen"</br>
+<span id="fulda">2.</span> Unter dem Bild ablesen, welche Sehenswürdigkeit es zu wie viel Prozent sein könnte</br>
+<span id="fulda">3.</span> Wenn Sie möchten, können Sie das Bild anhalten oder ein Foto davon speichern.</br>
+
+</div>
+
+  <button type="button" onclick="init()">Foto aufnehmen</button>
+  <button type="button" onclick="webcam.stop()">Foto anhalten</button>
+  <div id="webcam-container"></div>
+  <button type="button" onclick="capture()">Foto machen</button>
+  <div id="label-container"></div>
+  <div id="picture-container"></div>
+  <div id="text-container"> Hier finden Sie mehr zu der Sehenswürdigkeit:
+    <div id="button"><a href="./fulda_dom.html">➢ Dom</a></div>
+    <div id="button"><a href="./fulda_michaelskirche.html">➢ Michaelskirche</a></div>
+    <div id="button"><a href="./fulda_stadtschloss.html">➢ Stadtschloss</a></div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script type="text/javascript">
+      // More API functions here:
+      // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+  
+      // the link to your model provided by Teachable Machine export panel
+      const URL = "https://teachablemachine.withgoogle.com/models/hSM8qnJ8l/";
+  
+      let model, webcam, labelContainer, maxPredictions;
+  
+      // Load the image model and setup the webcam
+      async function init() {
+          const modelURL = URL + "model.json";
+          const metadataURL = URL + "metadata.json";
+  
+          // load the model and metadata
+          // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+          // or files from your local hard drive
+          // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+          model = await tmImage.load(modelURL, metadataURL);
+          maxPredictions = model.getTotalClasses();
+  
+          // Convenience function to setup a webcam
+          const flip = true; // whether to flip the webcam
+          webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+          await webcam.setup(); // request access to the webcam
+          await webcam.play();
+          window.requestAnimationFrame(loop);
+  
+          // append elements to the DOM
+          document.getElementById("webcam-container").appendChild(webcam.canvas);
+          labelContainer = document.getElementById("label-container");
+          for (let i = 0; i < maxPredictions; i++) { // and class labels
+              labelContainer.appendChild(document.createElement("div"));
+          }
+      }
+  
+      async function capture() {
+        let picture = webcam.snap();
+        document.querySelector('#download-photo').href = picture;
+      }
+  
+      async function loop() {
+          webcam.update(); // update the webcam frame
+          await predict();
+          window.requestAnimationFrame(loop);
+      }
+  
+      // run the webcam image through the image model
+      async function predict() {
+          // predict can take in an image, video or canvas html element
+          const prediction = await model.predict(webcam.canvas);
+          for (let i = 0; i < maxPredictions; i++) {
+              const classPrediction =
+                  prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+              labelContainer.childNodes[i].innerHTML = classPrediction;
+          }
+      }
+  </script>
+  </body>
