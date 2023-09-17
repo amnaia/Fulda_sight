@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <title>Was sehe ich in Fulda? - Michaelskirche</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9">
+    
+    <!-- Custom styles for this template -->
+    <link href="./CSS/nonbionic-theme.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+</br><a href="fulda.de"><img src="./Pics/fulda.svg"></a>
+  <header class="mb-auto">
+    <div>
+      <h1 class="float-md-start mb-0"> Was sehe ich in Fulda? </br> Michaelskirche</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="./fulda_sightseeing.html">Home</a>
+      </nav>
+    </div>
+  </header>
+<body>
+  <!-- Toggle für Bionic Reading fehlt (evtl. machbar über CSS?)
+      Dann kopieren für weitere Sehenswürdigkeiten-->
+  <div>
+
+    <!--<div id="toggle"><button id="theme-toggle">Bionic Reading</button></div>
+    -->
+    <p id="text">Die Michaelskirche in Fulda wurde im vorromanischen karolingischen Baustil im Auftrag von Abt Eigil in den Jahren von 820 bis 822 erbaut. Sie galt lange unumstritten als ältestes Beispiel eines Nachbaus der Grabeskirche in Deutschland, ein Bezug, der von Teilen der neueren Forschung jedoch in Frage gestellt wird. Aufgrund ihres Alters und ihrer architektonischen Besonderheiten zählt sie jedenfalls zu den bedeutendsten mittelalterlichen Sakralbauten Deutschlands. Sie diente als Totenkapelle des 744 gegründeten Klosters Fulda, eines der führenden kulturellen Zentren des frühen Mittelalters, und als Grablege ihres Erbauers Eigil. Die von Eigil wohl ins Auge gefasste Weiterverwendung als Abtsgrablege kam hingegen nicht zustande. Ihre Bedeutung beruht auch auf dem Umstand, dass sich in der Vita Aegil Abbatis Fuldensis des Fuldaer Mönchs Brun Candidus eine zeitgenössische Deutung der Bausymbolik erhalten hat, die sich ausdrücklich auf Hrabanus Maurus beruft.</p>
+     <div id="link"><a href="https://de.wikipedia.org/wiki/Michaelskirche_(Fulda)">Mehr</a></div></div>
+</body>
+<script>
+  // Get references to the theme toggle button and the theme stylesheet
+  const themeToggle = document.getElementById("theme-toggle");
+  //const themeStylesheet = document.getElementById("theme-stylesheet");
+
+  // Define variables to track the current theme state
+  let isBionicTheme = false;
+
+  // Function to toggle between bionic and nonbionic themes
+  function toggleTheme() {
+    if (isBionicTheme) {
+      themeStylesheet.href = "./CSS/nonbionic-theme.css"; // Switch to the light theme
+    } else {
+      themeStylesheet.href = "./CSS/bionic-theme.css"; // Switch to the dark theme
+    }
+    // Update the theme state
+    isBionicTheme = !isBionicTheme;
+  }
+
+  // Attach a click event listener to the theme toggle button
+  themeToggle.addEventListener("click", toggleTheme);
+</script>
+</html>
